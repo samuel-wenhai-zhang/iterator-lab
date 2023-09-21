@@ -15,14 +15,29 @@ public class IteratorRemover
 
 	public IteratorRemover(String line, String rem)
 	{
+		String[] words = line.split(" ");
+		list = new ArrayList<String>(Arrays.asList(words));
+		toRemove = rem;
 	}
 
+	public void setList(String line, String rem) {
+		String[] words = line.split(" ");
+		list = new ArrayList<String>(Arrays.asList(words));
+		toRemove = rem;
+	}
+	
 	public void remove()
 	{
+		Iterator<String> it = list.iterator();
+		while (it.hasNext()) {
+			if (it.next().equals(toRemove)) {
+				it.remove();
+			}
+		}
 	}
 
 	public String toString()
 	{
-		return "";
+		return list + "\n\n";
 	}
 }
